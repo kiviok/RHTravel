@@ -2,7 +2,7 @@
     <ul>
         {% for item in site.menu %}
         <li class="{% if page.url == {{item.url}} %} active {% endif %}">
-            <a href="{{item.url}}">{{item.name}}</a>
+            <a href="{{item.url | absolute_url }}">{{item.name}}</a>
         </li>
         {% endfor %}
     </ul>
