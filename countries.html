@@ -1,0 +1,58 @@
+---
+layout: default
+permalink: countries/
+---
+
+<main class="countries">
+    <aside class="country-list">
+        <ul>
+            {% for country in site.country-list %}
+                <li>{{country.title}}</li>
+            {% endfor %}
+        </ul>
+    </aside>
+    <section class="content">
+        {% for country in site.country-list %}
+            <div id="{{country.title}}" class="content-item">
+                <h2>{{country.title}}</h2>
+                {{country.content}}
+
+                <div class="recent-posts">
+
+                    {% assign tag = country.title | downcase %}
+                    <h3>Recent post</h3>
+
+                    {% for post in site.tags[tag] %}
+                    <a href="{{post.url}}">{{post.title}}</a>
+
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </section>
+</main>
+
+<script>
+    let aside = document.getElementsByTagName('aside');
+    let anchors = aside[0].getElementsByTagName('li');
+    let items = document.getElementsByClassName('content-item');
+
+    console.log(items);
+    let curr_item = items[0];
+    curr_item.style.display = 'block';
+
+    Array.prototype.forEach.call(anchors, anchor => {
+
+        anchor.onclick = function (event) {
+
+            if (!event.hasOwnProperty(curr_item)) {
+                curr_item.style.display = 'none';
+                curr_item = items[anchor.innerHTML];
+                curr_item.style.display = 'block';
+            }
+        };
+    });
+
+</script>

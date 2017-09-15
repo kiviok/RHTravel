@@ -1,0 +1,23 @@
+---
+layout: default
+permalink: contacts/
+---
+<main class="contacts">
+    <aside>
+        <h2>Find Me</h2>
+        {% for link in site.social-links %}
+        <a href="{{link.href}}">{{link.name}}</a>
+        {% endfor %}
+    </aside>
+    <div class="about">
+        <div class="avatar"></div>
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab blanditiis commodi consectetur deleniti ipsa
+                iste labore magni minima minus obcaecati optio quidem repellat saepe similique totam ullam, veritatis
+                voluptas, voluptatibus.</p>
+            <p>Alias aperiam beatae commodi cumque debitis dignissimos distinctio dolorum error et exercitationem
+                explicabo facere id in inventore maiores numquam odit omnis optio placeat provident sapiente sed totam
+                vitae voluptas, voluptatum.</p>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,39 @@
+---
+layout: default
+permalink: gallery/
+---
+<main class="gallery">
+    <div class="grid-sizer"></div>
+
+
+
+    {% for img in site.data.gallery.all-in.urls %}
+    <div class="grid-item">
+        <img src="/assets/images/spin.gif" data-original="{{img}}" alt="{{site.data.gallery.all-in.alt}}">
+    </div>
+    {% endfor %}
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/assets/js/jquery.lazyload.js"></script>
+<script src="/assets/js/masonry.js"></script>
+
+<script>
+    let images = $('img');
+    let grid = $('main.gallery');
+
+    grid.masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        gutter: 5,
+        percentPosition: true
+    });
+
+    images.lazyload({
+        effect: "fadeIn",
+        load: function () {
+            grid.masonry('layout');
+        }
+    });
+</script>
+
